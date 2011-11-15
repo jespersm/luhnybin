@@ -1,4 +1,10 @@
 #!/bin/sh
 
-# Call your program here instead of cat.
-cat
+# Short and sweet build toolchain:
+if [ LuhnFilter.java -nt LuhnFilter.class ]; then
+  javac LuhnFilter.java
+fi
+
+# Go ahead, run the thing
+java LuhnFilter
+
