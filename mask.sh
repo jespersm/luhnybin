@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # Short and sweet build toolchain:
-if [ LuhnFilter.java -nt LuhnFilter.class ]; then
-  javac LuhnFilter.java
+if [ luhn.c -nt luhn ]; then
+  gcc -O4 luhn.c -o luhn
 fi
 
 # Go ahead, run the thing
-java LuhnFilter
+./luhn
 
