@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <ctype.h>
 
 /*
  * A simple stab at Square's Luhn filter challenge, this time in C
@@ -64,7 +67,7 @@ size_t filter(char output[], char input[], size_t length) {
 	return (saw_digit == 1) ? safe_anchor : length;
 }
 
-int main(int argc, char argv[][])
+int main(int argc, char *argv[])
 {
 	int length, written = 0;
 	size_t start_pad = 0, safe_anchor = 0;
@@ -103,8 +106,8 @@ int main(int argc, char argv[][])
 			exit(1);
 		}
 
-		memcpy(&input_buffer[0], &input_buffer[safe_anchor], start_pad);
-		memcpy(&output_buffer[0], &output_buffer[safe_anchor], start_pad);
+		memmove(&input_buffer[0], &input_buffer[safe_anchor], start_pad);
+		memmove(&output_buffer[0], &output_buffer[safe_anchor], start_pad);
 		// now the first start_pad chars are ready for next pass
 	}
 
